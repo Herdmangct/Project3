@@ -22,6 +22,7 @@ const HomeScreen = props => {
   const renderBarCard = itemData => {
     return (
       <TouchableOpacity
+        delayPressIn={50}
         onPress={() => {
           props.navigation.navigate({
             routeName: "BarMenu",
@@ -41,14 +42,12 @@ const HomeScreen = props => {
   };
 
   return (
-    <View>
-      <FlatList
-        keyExtractor={(item, index) => item.id}
-        data={BARS}
-        renderItem={renderBarCard}
-        numColumns={1}
-      />
-    </View>
+    <FlatList
+      keyExtractor={(item, index) => item.id}
+      data={BARS}
+      renderItem={renderBarCard}
+      numColumns={1}
+    />
   );
 };
 

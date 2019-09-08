@@ -1,13 +1,6 @@
 // Libraries
 import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-  Platform
-} from "react-native";
+import { FlatList, TouchableOpacity, StyleSheet } from "react-native";
 
 // My Components
 import BarCard from "../../components/MainScreens/BarCard";
@@ -15,15 +8,14 @@ import BarCard from "../../components/MainScreens/BarCard";
 // Data
 import { BARS } from "../../data/dummy-data";
 
-// Constants
-import Colors from "../../constants/Colors";
-
 const HomeScreen = props => {
   const renderBarCard = itemData => {
     return (
-      <TouchableOpacity
-        delayPressIn={50}
-        onPress={() => {
+      <BarCard
+        title={itemData.item.title}
+        image={itemData.item.imageURL}
+        location={itemData.item.location}
+        onSelect={() => {
           props.navigation.navigate({
             routeName: "BarMenu",
             params: {
@@ -31,13 +23,7 @@ const HomeScreen = props => {
             }
           });
         }}
-      >
-        <BarCard
-          title={itemData.item.title}
-          image={itemData.item.imageURL}
-          location={itemData.item.location}
-        />
-      </TouchableOpacity>
+      />
     );
   };
 
@@ -52,30 +38,9 @@ const HomeScreen = props => {
 };
 
 HomeScreen.navigationOptions = {
-  headerTitle: "Home",
-  headerStyle: {
-    backgroundColor: Platform.OS === "android" ? Colors.primaryColor : ""
-  },
-  headerTintColor:
-    Platform.OS === "android" ? Colors.accentColor : Colors.primaryColor,
-  headerTitleStyle: {
-    fontWeight: "bold"
-  }
+  headerTitle: "Home"
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  barCard: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 15,
-    height: 150
-  }
-});
+const styles = StyleSheet.create({});
 
 export default HomeScreen;

@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import { useScreens } from "react-native-screens";
 
 // My Components
 import MainNavigator from "./navigation/MainNavigator";
+
+useScreens();
 
 const fetchFonts = () => {
   return Font.loadAsync({

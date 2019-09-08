@@ -1,19 +1,44 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
+  TouchableNativeFeedback
+} from "react-native";
 
 // Purely responsible for layout
 const BardCard = props => {
+  let TouchableComponent = TouchableOpacity;
+
+  if (Platform.OS === "android" && Platform.Version >= 21) {
+    TouchableComponent = TouchableNativeFeedback;
+  }
   return (
     <View style={styles.barCard}>
-      <View style={styles.imageContainer}>
-        <Image style={styles.image} source={{ uri: props.image }} />
-      </View>
-      <View style={styles.info}>
-        <Text style={styles.title}>{props.title}</Text>
-        <View style={styles.locTime}>
-          <Text style={styles.location}>{props.location}</Text>
-          <Text style={styles.ttd}>{"33 min walk"}</Text>
-        </View>
+      <View style={styles.touchable}>
+        <TouchableComponent
+          useForeground
+          delayPressIn={30}
+          onPress={() => {
+            props.onSelect();
+          }}
+        >
+          <View style={styles.cardContainer}>
+            <View style={styles.imageContainer}>
+              <Image style={styles.image} source={{ uri: props.image }} />
+            </View>
+            <View style={styles.info}>
+              <Text style={styles.title}>{props.title}</Text>
+              <View style={styles.locTime}>
+                <Text style={styles.location}>{props.location}</Text>
+                <Text style={styles.timeToDestination}>{"33 min walk"}</Text>
+              </View>
+            </View>
+          </View>
+        </TouchableComponent>
       </View>
     </View>
   );
@@ -28,12 +53,20 @@ const styles = StyleSheet.create({
     elevation: 5,
     borderRadius: 5,
     backgroundColor: "white",
-    height: 200,
+    height: 225,
     margin: 20
+  },
+  touchable: {
+    borderRadius: 10,
+    overflow: "hidden"
+  },
+  cardContainer: {
+    height: "100%",
+    width: "100%"
   },
   imageContainer: {
     width: "100%",
-    height: "60%",
+    height: "65%",
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
     overflow: "hidden"
@@ -60,8 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#888"
   },
-  // Time to Destination
-  ttd: {
+  timeToDestination: {
     fontSize: 10,
     color: "#888"
   }

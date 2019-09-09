@@ -20,7 +20,7 @@ import OrderOptionsScreen from "../screens/OrderScreens/OrderOptionsScreen";
 // Constants
 import Colors from "../constants/Colors";
 
-// #1 Navigator
+// #1 Navigator - Stack Navigator
 // returns a navigator object that has a stack of different screens
 const BackandForthNavigator = createStackNavigator(
   {
@@ -29,7 +29,7 @@ const BackandForthNavigator = createStackNavigator(
     BarMenu: BarMenuScreen
   },
   {
-    mode: "card", // change to modal for slide up from bottom of screen
+    mode: "card", // change to modal for slide up from bottom of screen ios
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: Platform.OS === "android" ? Colors.primaryColor : ""
@@ -75,7 +75,7 @@ const tabScreenConfig = {
   }
 };
 
-// #2 Navigator
+// #2 Navigator Tab Navigator
 // root navigator because BackandForthNavigator nested in this navigator
 const MainScreenTabsNavigator =
   Platform.OS === "android"

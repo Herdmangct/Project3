@@ -1,13 +1,19 @@
 import React from "react";
 import {
   View,
-  Text,
   Image,
   StyleSheet,
   TouchableOpacity,
   Platform,
   TouchableNativeFeedback
 } from "react-native";
+
+// My Components
+import BodyText from "../GeneralComponents/BodyText";
+import HeaderText from "../GeneralComponents/HeaderText";
+
+// Constants
+import Colors from "../../constants/Colors";
 
 // Purely responsible for layout
 const BardCard = props => {
@@ -31,10 +37,12 @@ const BardCard = props => {
               <Image style={styles.image} source={{ uri: props.image }} />
             </View>
             <View style={styles.info}>
-              <Text style={styles.title}>{props.title}</Text>
+              <HeaderText style={styles.title}>{props.title}</HeaderText>
               <View style={styles.locTime}>
-                <Text style={styles.location}>{props.location}</Text>
-                <Text style={styles.timeToDestination}>{"33 min walk"}</Text>
+                <BodyText style={styles.location}>{props.location}</BodyText>
+                <BodyText style={styles.timeToDestination}>
+                  {"33 min walk"}
+                </BodyText>
               </View>
             </View>
           </View>
@@ -91,11 +99,11 @@ const styles = StyleSheet.create({
   },
   location: {
     fontSize: 12,
-    color: "#888"
+    color: Colors.smallTextColor
   },
   timeToDestination: {
     fontSize: 10,
-    color: "#888"
+    color: Colors.smallTextColor
   }
 });
 

@@ -1,14 +1,18 @@
 import React from "react";
 import {
   View,
-  Text,
   Image,
   TouchableOpacity,
   TouchableNativeFeedback,
   StyleSheet,
   Platform
 } from "react-native";
-import { Divider } from "react-native-material-ui";
+
+// My Components
+import BodyText from "../GeneralComponents/BodyText";
+import HeaderText from "../GeneralComponents/HeaderText";
+
+// Constants
 import Colors from "../../constants/Colors";
 
 // Purely responsible for layout
@@ -20,44 +24,81 @@ const BarItemDropDown = props => {
   }
   return (
     <View style={styles.barItem}>
-      <TouchableComponent onPress={props.onSelectBarItem}>
-        <View>
-          <View style={styles.infoContainer}>
-            <View style={{ ...styles.barItemRow, ...styles.barItemHeader }}>
-              <Text style={styles.header}>{props.title}</Text>
+      <View style={styles.touchableContainer}>
+        <TouchableComponent
+          onPress={props.onSelectBarItem}
+          style={styles.touchable}
+        >
+          <View style={styles.cardContainer}>
+            <View style={styles.imageContainer}>
+              <Image source={{ uri: props.imageUrl }} style={styles.image} />
             </View>
-            <View style={{ ...styles.barItemRow, ...styles.barItemDetail }}>
-              <Text>
-                {props.servingSize} {props.servingUnit}
-              </Text>
-            </View>
-            <View style={{ ...styles.barItemRow, ...styles.barItemDetail }}>
-              <Text>${props.price.toFixed(2)}</Text>
+            <View style={styles.infoContainer}>
+              <View style={{ ...styles.barItemRow, ...styles.barItemHeader }}>
+                <HeaderText style={styles.headerText}>{props.title}</HeaderText>
+              </View>
+              <View style={{ ...styles.barItemRow, ...styles.barItemDetail }}>
+                <BodyText style={styles.detailText}>
+                  {props.servingSize} {props.servingUnit}
+                </BodyText>
+              </View>
+              <View style={{ ...styles.barItemRow, ...styles.barItemDetail }}>
+                <BodyText style={styles.detailText}>
+                  ${props.price.toFixed(2)}
+                </BodyText>
+              </View>
             </View>
           </View>
-        </View>
-      </TouchableComponent>
+        </TouchableComponent>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   barItem: {
-    height: 75,
+    height: 100,
     width: "100%",
     borderBottomWidth: 0.5,
     borderBottomColor: Colors.primaryColor
   },
+  touchableContainer: {
+    overflow: "hidden"
+  },
+  touchable: {
+    width: "100%",
+    height: "100%",
+    overflow: "hidden"
+  },
+  cardContainer: {
+    height: "100%",
+    width: "100%",
+    padding: 10,
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  imageContainer: {
+    height: "100%",
+    width: "12.5%",
+    overflow: "hidden"
+  },
+  image: {
+    height: "100%",
+    width: "100%"
+  },
   infoContainer: {
-    margin: 10
+    padding: 10,
+    justifyContent: "center"
   },
   barItemHeader: {},
-  header: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: Colors.primaryColor
+  headerText: {
+    color: Colors.primaryTextColor
   },
   barItemDetail: {},
+  detailText: {
+    fontSize: 14,
+    color: Colors.smallTextColor
+  },
   barItemRow: {
     flexDirection: "row"
   }

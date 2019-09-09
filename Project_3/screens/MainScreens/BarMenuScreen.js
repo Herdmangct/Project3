@@ -17,7 +17,14 @@ const BarMenuScreen = props => {
         servingSize={itemData.item.servingSize}
         servingUnit={itemData.item.servingUnit}
         price={itemData.item.price}
-        onSelectBarItem={() => {}}
+        onSelectBarItem={() => {
+          props.navigation.navigate({
+            routeName: "OrderOptions",
+            params: {
+              barItemId: itemData.item.id
+            }
+          });
+        }}
       />
     );
   };
@@ -29,14 +36,12 @@ const BarMenuScreen = props => {
   );
 
   return (
-    <View style={styles.screen}>
-      <FlatList
-        data={displayedDrinks}
-        keyExtractor={(item, index) => item.id}
-        renderItem={renderBarItem}
-        style={styles.flatList}
-      />
-    </View>
+    <FlatList
+      data={displayedDrinks}
+      keyExtractor={(item, index) => item.id}
+      renderItem={renderBarItem}
+      style={styles.flatList}
+    />
   );
 };
 
@@ -57,7 +62,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   flatList: {
-    width: "100%"
+    width: "100%",
+    height: "100%"
   }
 });
 

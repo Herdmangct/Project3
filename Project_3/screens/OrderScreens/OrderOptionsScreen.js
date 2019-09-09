@@ -9,8 +9,8 @@ import BodyText from "../../components/GeneralComponents/BodyText";
 
 const OrderOptionsScreen = props => {
   const barItemId = props.navigation.getParam("barItemId");
-
   const selectedBarItem = BARITEMS.find(barItem => barItem.id === barItemId);
+
   return (
     <View style={styles.screen}>
       <BodyText>{selectedBarItem.title}</BodyText>
@@ -20,8 +20,12 @@ const OrderOptionsScreen = props => {
 };
 
 OrderOptionsScreen.navigationOptions = navigationData => {
-  console.log(navigationData.navigation);
-  return;
+  const selectedBarTitle = navigationData.navigation.getParam(
+    "selectedBarTitle"
+  );
+  return {
+    headerTitle: selectedBarTitle
+  };
 };
 
 const styles = StyleSheet.create({

@@ -1,5 +1,6 @@
 // Libraries
 import React from "react";
+import { Text } from "react-native";
 import { Platform } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
@@ -19,6 +20,7 @@ import OrderOptionsScreen from "../screens/OrderScreens/OrderOptionsScreen";
 
 // Constants
 import Colors from "../constants/Colors";
+import defaultStyles from "../constants/default-styles";
 
 // #1 Navigator - Stack Navigator
 // returns a navigator object that has a stack of different screens
@@ -36,9 +38,7 @@ const BackandForthNavigator = createStackNavigator(
       },
       headerTintColor:
         Platform.OS === "android" ? Colors.accentColor : Colors.primaryColor,
-      headerTitleStyle: {
-        fontWeight: "bold"
-      }
+      headerTitleStyle: defaultStyles.defaultFont
     }
   }
 );
@@ -47,6 +47,7 @@ const tabScreenConfig = {
   Home: {
     screen: BackandForthNavigator,
     navigationOptions: {
+      tabBarLabel: <Text style={defaultStyles.defaultFont}>Home</Text>,
       tabBarIcon: tabInfo => {
         return <Ionicons name="ios-beer" size={25} color={tabInfo.tintColor} />;
       }
@@ -55,7 +56,7 @@ const tabScreenConfig = {
   QRCode: {
     screen: QRCodeScreen,
     navigationOptions: {
-      tabBarLabel: "Scan",
+      tabBarLabel: <Text style={defaultStyles.defaultFont}>Scan</Text>,
       tabBarIcon: tabInfo => {
         return (
           <Ionicons name="ios-qr-scanner" size={25} color={tabInfo.tintColor} />
@@ -66,6 +67,7 @@ const tabScreenConfig = {
   Profile: {
     screen: ProfileScreen,
     navigationOptions: {
+      tabBarLabel: <Text style={defaultStyles.defaultFont}>Profile</Text>,
       tabBarIcon: tabInfo => {
         return (
           <Ionicons name="ios-person" size={25} color={tabInfo.tintColor} />
@@ -84,12 +86,15 @@ const MainScreenTabsNavigator =
         shifting: true,
         labeled: true,
         barStyle: {
-          backgroundColor: "white"
+          backgroundColor: Colors.accentColor
         }
       })
     : createBottomTabNavigator(tabScreenConfig, {
         tabBarOptions: {
-          activeTintColor: Colors.primaryColor
+          activeTintColor: Colors.primaryColor,
+          labelStyle: {
+            fontFamily: defaultStyles.defaultFont.fontFamily
+          }
         }
       });
 

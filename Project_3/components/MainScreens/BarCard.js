@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
     margin: 5
   },
   title: {
-    fontSize: 18,
     marginVertical: 4
   },
   locTime: {

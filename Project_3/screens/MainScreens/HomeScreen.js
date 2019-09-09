@@ -1,6 +1,6 @@
 // Libraries
 import React from "react";
-import { FlatList, TouchableOpacity, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 
 // My Components
 import BarCard from "../../components/MainScreens/BarCard";

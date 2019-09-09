@@ -21,7 +21,8 @@ const BarMenuScreen = props => {
           props.navigation.navigate({
             routeName: "OrderOptions",
             params: {
-              barItemId: itemData.item.id
+              barItemId: itemData.item.id,
+              selectedBarTitle: selectedBar.title
             }
           });
         }}
@@ -29,8 +30,10 @@ const BarMenuScreen = props => {
     );
   };
 
+  // get bar information and drinks information
   const barID = props.navigation.getParam("barID");
 
+  const selectedBar = BARS.find(bar => bar.id === barID);
   const displayedDrinks = BARITEMS.filter(
     barItem => barItem.barId.indexOf(barID) >= 0
   );

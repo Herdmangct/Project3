@@ -35,7 +35,7 @@ const BarItemDropDown = props => {
             </View>
             <View style={styles.infoContainer}>
               <View style={{ ...styles.barItemRow, ...styles.barItemHeader }}>
-                <HeaderText style={styles.headerText}>{props.title}</HeaderText>
+                <HeaderText>{props.title}</HeaderText>
               </View>
               <View style={{ ...styles.barItemRow, ...styles.barItemDetail }}>
                 <BodyText style={styles.detailText}>
@@ -91,9 +91,6 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   barItemHeader: {},
-  headerText: {
-    color: Colors.primaryTextColor
-  },
   barItemDetail: {},
   detailText: {
     fontSize: 14,

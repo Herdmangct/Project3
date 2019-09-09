@@ -1,22 +1,40 @@
+// Libraries
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 
 // data
-import { BARS } from "../../data/dummy-data";
+import { BARS, BARITEMS } from "../../data/dummy-data";
+
+// My Components
+import BarItemCard from "../../components/MainScreens/BarItemCard";
 
 const BarMenuScreen = props => {
+  const renderBarItem = itemData => {
+    return (
+      <BarItemCard
+        imageUrl={itemData.item.imageUrl}
+        title={itemData.item.title}
+        servingSize={itemData.item.servingSize}
+        servingUnit={itemData.item.servingUnit}
+        price={itemData.item.price}
+        onSelectBarItem={() => {}}
+      />
+    );
+  };
+
   const barID = props.navigation.getParam("barID");
 
-  const selectedBar = BARS.find(bar => bar.id === barID);
+  const displayedDrinks = BARITEMS.filter(
+    barItem => barItem.barId.indexOf(barID) >= 0
+  );
+
   return (
     <View style={styles.screen}>
-      <Text>{selectedBar.title}</Text>
-      <Text>The Bar Menu Screen</Text>
-      <Button
-        title="Go to The Order Options Screen"
-        onPress={() => {
-          props.navigation.navigate({ routeName: "OrderOptions" });
-        }}
+      <FlatList
+        data={displayedDrinks}
+        keyExtractor={(item, index) => item.id}
+        renderItem={renderBarItem}
+        style={styles.flatList}
       />
     </View>
   );
@@ -37,6 +55,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  flatList: {
+    width: "100%"
   }
 });
 

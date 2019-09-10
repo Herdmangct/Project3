@@ -1,10 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+
+// My Components
+import moduleName from "../../components/GeneralComponents/BodyText";
+import BodyText from "../../components/GeneralComponents/BodyText";
 
 const ProfileScreen = props => {
   return (
     <View style={styles.screen}>
-      <Text>The Profile Screen</Text>
+      <TouchableOpacity
+        onPress={() => {
+          props.navigation.navigate({
+            routeName: "Favourites"
+          });
+        }}
+      >
+        <BodyText>Go To The Favourites Screen</BodyText>
+      </TouchableOpacity>
+      <BodyText>The Profile Screen</BodyText>
     </View>
   );
 };

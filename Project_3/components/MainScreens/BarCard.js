@@ -7,6 +7,7 @@ import {
   Platform,
   TouchableNativeFeedback
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 // My Components
 import BodyText from "../GeneralComponents/BodyText";
@@ -37,7 +38,29 @@ const BardCard = props => {
               <Image style={styles.image} source={{ uri: props.image }} />
             </View>
             <View style={styles.info}>
-              <HeaderText style={styles.title}>{props.title}</HeaderText>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between"
+                }}
+              >
+                <HeaderText style={styles.title}>{props.title}</HeaderText>
+                <TouchableComponent
+                  useForeground
+                  delayPressIn={30}
+                  onPress={() => {
+                    console.log("BEER!");
+                  }}
+                >
+                  <View style={{ alignItems: "center" }}>
+                    <Ionicons
+                      name="ios-beer"
+                      size={50}
+                      color={Colors.primaryColor}
+                    />
+                  </View>
+                </TouchableComponent>
+              </View>
               <View style={styles.locTime}>
                 <BodyText style={styles.location}>{props.location}</BodyText>
                 <BodyText style={styles.timeToDestination}>
@@ -90,6 +113,7 @@ const styles = StyleSheet.create({
     margin: 5
   },
   title: {
+    width: "70%",
     marginVertical: 4
   },
   locTime: {

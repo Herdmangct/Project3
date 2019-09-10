@@ -14,6 +14,7 @@ import HomeScreen from "../screens/MainScreens/HomeScreen";
 import BarMenuScreen from "../screens/MainScreens/BarMenuScreen";
 import QRCodeScreen from "../screens/MainScreens/QRCodeScreen";
 import ProfileScreen from "../screens/MainScreens/ProfileScreen";
+import FavouritesScreen from "../screens/MainScreens/FavouritesScreen";
 
 // Order Screens
 import OrderOptionsScreen from "../screens/OrderScreens/OrderOptionsScreen";
@@ -28,6 +29,20 @@ const styles = StyleSheet.create({
   }
 });
 
+const defaultStackNavOptions = {
+  headerStyle: {
+    backgroundColor: Platform.OS === "android" ? Colors.primaryColor : ""
+  },
+  headerTintColor:
+    Platform.OS === "android" ? Colors.accentColor : Colors.primaryColor,
+  headerTitleStyle: {
+    fontFamily: Fonts.headerTextFont
+  },
+  headerBackTitleStyle: {
+    fontFamily: Fonts.bodyTextFont
+  }
+};
+
 // #1 Navigator - Stack Navigator
 // returns a navigator object that has a stack of different screens
 const BackandForthNavigator = createStackNavigator(
@@ -38,16 +53,18 @@ const BackandForthNavigator = createStackNavigator(
   },
   {
     mode: "card", // change to modal for slide up from bottom of screen ios
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Platform.OS === "android" ? Colors.primaryColor : ""
-      },
-      headerTintColor:
-        Platform.OS === "android" ? Colors.accentColor : Colors.primaryColor,
-      headerTitleStyle: {
-        fontFamily: Fonts.headerTextFont
-      }
-    }
+    defaultNavigationOptions: defaultStackNavOptions
+  }
+);
+
+const FavouritesStackNavigator = createStackNavigator(
+  {
+    Profile: ProfileScreen,
+    Favourites: FavouritesScreen,
+    BarMenu: BarMenuScreen
+  },
+  {
+    defaultNavigationOptions: defaultStackNavOptions
   }
 );
 
@@ -73,7 +90,7 @@ const tabScreenConfig = {
     }
   },
   Profile: {
-    screen: ProfileScreen,
+    screen: FavouritesStackNavigator,
     navigationOptions: {
       tabBarLabel: <Text style={styles.tabScreenLabel}>Profile</Text>,
       tabBarIcon: tabInfo => {
@@ -99,10 +116,7 @@ const MainScreenTabsNavigator =
       })
     : createBottomTabNavigator(tabScreenConfig, {
         tabBarOptions: {
-          activeTintColor: Colors.primaryColor,
-          labelStyle: {
-            fontFamily: Fonts.tabScreenLabel
-          }
+          activeTintColor: Colors.primaryColor
         }
       });
 

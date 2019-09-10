@@ -36,7 +36,7 @@ const BarMenuScreen = props => {
     barItem => barItem.barId.indexOf(barID) >= 0
   );
 
-  // return an object of unique subCategories
+  // subCategories
   const subCategories = [
     ...new Set(displayedDrinks.map(drink => drink.subCategory))
   ].map(subCategory => {
@@ -46,11 +46,12 @@ const BarMenuScreen = props => {
       subCategory: subCategory
     };
   });
-  ///////////////////////////////////////////
+
+  console.log(subCategories);
 
   return (
     <FlatList
-      data={subCategories}
+      data={displayedDrinks}
       keyExtractor={(item, index) => item.id}
       renderItem={renderBarItem}
       style={styles.flatList}

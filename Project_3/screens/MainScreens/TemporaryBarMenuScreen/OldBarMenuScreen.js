@@ -1,30 +1,32 @@
 // Libraries
 import React from "react";
-import { StyleSheet, FlatList, Image } from "react-native";
-import { List } from "react-native-paper";
+import { StyleSheet, FlatList } from "react-native";
 
 // data
-import { BARS, BARITEMS } from "../../data/dummy-data";
+import { BARS, BARITEMS } from "../../../data/dummy-data";
 
 // My Components
-import BarItemCard from "../../components/MainScreens/BarItemCard";
-import DropDownMenu from "../../components/MainScreens/DropDownMenu";
-
-// Constants
-import Colors from "../../constants/Colors";
-import Fonts from "../../constants/Fonts";
+import BarItemCard from "../../../components/MainScreens/BarItemCard";
 
 const BarMenuScreen = props => {
   const renderBarItem = itemData => {
-    // console.log("itemData", itemData);
     return (
-      <DropDownMenu
-        title={itemData.item.subCategory}
+      <BarItemCard
         imageUrl={itemData.item.imageUrl}
-      >
-        <List.Item title="First item" />
-        <List.Item title="Second item" />
-      </DropDownMenu>
+        title={itemData.item.title}
+        servingSize={itemData.item.servingSize}
+        servingUnit={itemData.item.servingUnit}
+        price={itemData.item.price}
+        onSelectBarItem={() => {
+          props.navigation.navigate({
+            routeName: "OrderOptions",
+            params: {
+              barItemId: itemData.item.id,
+              selectedBarTitle: selectedBar.title
+            }
+          });
+        }}
+      />
     );
   };
 
@@ -36,21 +38,9 @@ const BarMenuScreen = props => {
     barItem => barItem.barId.indexOf(barID) >= 0
   );
 
-  // return an object of unique subCategories
-  const subCategories = [
-    ...new Set(displayedDrinks.map(drink => drink.subCategory))
-  ].map(subCategory => {
-    return {
-      id: displayedDrinks.find(barItem => barItem.subCategory === subCategory)
-        .id,
-      subCategory: subCategory
-    };
-  });
-  ///////////////////////////////////////////
-
   return (
     <FlatList
-      data={subCategories}
+      data={displayedDrinks}
       keyExtractor={(item, index) => item.id}
       renderItem={renderBarItem}
       style={styles.flatList}

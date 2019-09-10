@@ -57,7 +57,7 @@ const BarItemDropDown = props => {
 
 const styles = StyleSheet.create({
   barItem: {
-    height: 100,
+    height: 110,
     width: "100%",
     borderBottomWidth: 0.5,
     borderBottomColor: Colors.primaryColor
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     height: "100%",
     width: "100%",
-    padding: 10,
+    padding: 15,
     flexDirection: "row",
     alignItems: "center"
   },

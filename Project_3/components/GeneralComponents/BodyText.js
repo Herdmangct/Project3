@@ -3,6 +3,7 @@ import { Text, StyleSheet } from "react-native";
 
 // constants
 import Colors from "../../constants/Colors";
+import Fonts from "../../constants/Fonts";
 
 const BodyText = props => (
   <Text style={{ ...styles.bodyText, ...props.style }} numberOfLines={1}>
@@ -12,7 +13,7 @@ const BodyText = props => (
 
 const styles = StyleSheet.create({
   bodyText: {
-    fontFamily: "open-sans",
+    fontFamily: Fonts.bodyTextFont,
     color: Colors.primaryColor
   }
 });

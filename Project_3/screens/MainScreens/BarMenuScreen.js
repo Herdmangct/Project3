@@ -1,6 +1,6 @@
 // Libraries
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { StyleSheet, FlatList } from "react-native";
 
 // data
 import { BARS, BARITEMS } from "../../data/dummy-data";

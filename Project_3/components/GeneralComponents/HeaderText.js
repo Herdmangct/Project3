@@ -3,6 +3,7 @@ import { Text, StyleSheet } from "react-native";
 
 // constants
 import Colors from "../../constants/Colors";
+import Fonts from "../../constants/Fonts";
 
 const HeaderText = props => (
   <Text style={{ ...styles.headerText, ...props.style }} numberOfLines={1}>
@@ -12,7 +13,7 @@ const HeaderText = props => (
 
 const styles = StyleSheet.create({
   headerText: {
-    fontFamily: "open-sans-bold",
+    fontFamily: Fonts.headerTextFont,
     fontSize: 18,
     color: Colors.primaryTextColor
   }

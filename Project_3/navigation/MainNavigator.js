@@ -1,6 +1,6 @@
 // Libraries
 import React from "react";
-import { Text } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { Platform } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
@@ -20,7 +20,13 @@ import OrderOptionsScreen from "../screens/OrderScreens/OrderOptionsScreen";
 
 // Constants
 import Colors from "../constants/Colors";
-import defaultStyles from "../constants/default-styles";
+import Fonts from "../constants/Fonts";
+
+const styles = StyleSheet.create({
+  tabScreenLabel: {
+    fontFamily: Fonts.headerTextFont
+  }
+});
 
 // #1 Navigator - Stack Navigator
 // returns a navigator object that has a stack of different screens
@@ -38,7 +44,9 @@ const BackandForthNavigator = createStackNavigator(
       },
       headerTintColor:
         Platform.OS === "android" ? Colors.accentColor : Colors.primaryColor,
-      headerTitleStyle: defaultStyles.defaultFont
+      headerTitleStyle: {
+        fontFamily: Fonts.headerTextFont
+      }
     }
   }
 );
@@ -47,7 +55,7 @@ const tabScreenConfig = {
   Home: {
     screen: BackandForthNavigator,
     navigationOptions: {
-      tabBarLabel: <Text style={defaultStyles.defaultFont}>Home</Text>,
+      tabBarLabel: <Text style={styles.tabScreenLabel}>Home</Text>,
       tabBarIcon: tabInfo => {
         return <Ionicons name="ios-beer" size={25} color={tabInfo.tintColor} />;
       }
@@ -56,7 +64,7 @@ const tabScreenConfig = {
   QRCode: {
     screen: QRCodeScreen,
     navigationOptions: {
-      tabBarLabel: <Text style={defaultStyles.defaultFont}>Scan</Text>,
+      tabBarLabel: <Text style={styles.tabScreenLabel}>Scan</Text>,
       tabBarIcon: tabInfo => {
         return (
           <Ionicons name="ios-qr-scanner" size={25} color={tabInfo.tintColor} />
@@ -67,7 +75,7 @@ const tabScreenConfig = {
   Profile: {
     screen: ProfileScreen,
     navigationOptions: {
-      tabBarLabel: <Text style={defaultStyles.defaultFont}>Profile</Text>,
+      tabBarLabel: <Text style={styles.tabScreenLabel}>Profile</Text>,
       tabBarIcon: tabInfo => {
         return (
           <Ionicons name="ios-person" size={25} color={tabInfo.tintColor} />
@@ -93,7 +101,7 @@ const MainScreenTabsNavigator =
         tabBarOptions: {
           activeTintColor: Colors.primaryColor,
           labelStyle: {
-            fontFamily: defaultStyles.defaultFont.fontFamily
+            fontFamily: Fonts.tabScreenLabel
           }
         }
       });

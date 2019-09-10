@@ -7,11 +7,12 @@ import {
   Platform,
   TouchableNativeFeedback
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 // My Components
 import BodyText from "../GeneralComponents/BodyText";
 import HeaderText from "../GeneralComponents/HeaderText";
+import BeerButton from "../Temporary/BeerButton";
 
 // Constants
 import Colors from "../../constants/Colors";
@@ -35,6 +36,21 @@ const BardCard = props => {
         >
           <View style={styles.cardContainer}>
             <View style={styles.imageContainer}>
+              <TouchableComponent
+                useForeground
+                delayPressIn={30}
+                onPress={() => {
+                  console.log("BEER!");
+                }}
+              >
+                <View style={styles.favourite}>
+                  <Ionicons
+                    name="ios-star-outline"
+                    size={50}
+                    color={Colors.accentColor}
+                  />
+                </View>
+              </TouchableComponent>
               <Image style={styles.image} source={{ uri: props.image }} />
             </View>
             <View style={styles.info}>
@@ -45,6 +61,7 @@ const BardCard = props => {
                 }}
               >
                 <HeaderText style={styles.title}>{props.title}</HeaderText>
+
                 <TouchableComponent
                   useForeground
                   delayPressIn={30}
@@ -52,11 +69,16 @@ const BardCard = props => {
                     console.log("BEER!");
                   }}
                 >
-                  <View style={{ alignItems: "center" }}>
+                  <View style={styles.button}>
+                    {/* <FontAwesome
+                      name="glass"
+                      size={75}
+                      color={Colors.accentColor}
+                    ></FontAwesome> */}
                     <Ionicons
                       name="ios-beer"
-                      size={50}
-                      color={Colors.primaryColor}
+                      size={75}
+                      color={Colors.accentColor}
                     />
                   </View>
                 </TouchableComponent>
@@ -115,6 +137,27 @@ const styles = StyleSheet.create({
   title: {
     width: "70%",
     marginVertical: 4
+  },
+  button: {
+    position: "absolute",
+    top: -50,
+    right: 5,
+    width: 80,
+    height: 80,
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden"
+  },
+  favourite: {
+    position: "absolute",
+    top: -15,
+    left: -15,
+    width: 80,
+    height: 80,
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+    zIndex: 1
   },
   locTime: {
     flex: 1,

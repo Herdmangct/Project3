@@ -1,9 +1,12 @@
 // Libraries
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { Ionicons } from "@expo/vector-icons";
 
 // My Components
 import BarCard from "../../components/MainScreens/BarCard";
+import CustomHeaderButton from "../../components/NavigationComponents/CustomHeaderButton";
 
 // Data
 import { BARS } from "../../data/dummy-data";
@@ -38,7 +41,18 @@ const HomeScreen = props => {
 };
 
 HomeScreen.navigationOptions = {
-  headerTitle: "Home"
+  headerTitle: "Home",
+  headerRight: (
+    <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+      <Item
+        title="Map"
+        iconName="google-maps"
+        onPress={() => {
+          console.log("MAP VIEW!");
+        }}
+      />
+    </HeaderButtons>
+  )
 };
 
 const styles = StyleSheet.create({});

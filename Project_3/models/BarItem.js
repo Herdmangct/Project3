@@ -4,7 +4,8 @@ class BarItem {
     id,
     barId,
     title,
-    alcoholCategory,
+    Category,
+    subCategory,
     brandName,
     servingSize,
     servingUnit,
@@ -18,7 +19,8 @@ class BarItem {
     this.id = id;
     this.barId = barId;
     this.title = title;
-    this.alcoholCategory = alcoholCategory;
+    this.Category = Category;
+    this.subCategory = subCategory;
     this.brandName = brandName;
     this.servingSize = servingSize;
     this.servingUnit = servingUnit;

@@ -52,6 +52,8 @@ const BardCard = props => {
   );
 };
 
+const borderRadiusVar = 5;
+
 const styles = StyleSheet.create({
   barCard: {
     shadowColor: "black",
@@ -59,13 +61,13 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
     elevation: 5,
-    borderRadius: 5,
+    borderRadius: borderRadiusVar,
     backgroundColor: "white",
     height: 225,
     margin: 20
   },
   touchable: {
-    borderRadius: 10,
+    borderRadius: borderRadiusVar,
     overflow: "hidden"
   },
   cardContainer: {
@@ -75,8 +77,8 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: "100%",
     height: "65%",
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
+    borderTopLeftRadius: borderRadiusVar,
+    borderTopRightRadius: borderRadiusVar,
     overflow: "hidden"
   },
   image: {

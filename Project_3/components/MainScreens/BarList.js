@@ -9,6 +9,7 @@ const BarList = props => {
     return (
       <BarCard
         title={itemData.item.title}
+        type={itemData.item.type}
         image={itemData.item.imageURL}
         location={itemData.item.location}
         onSelect={() => {
@@ -28,17 +29,11 @@ const BarList = props => {
       data={props.listData}
       keyExtractor={(item, index) => item.id}
       renderItem={renderBarCard}
-      numColumns={1}
+      style={props.style}
     />
   );
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});
+const styles = StyleSheet.create({});
 
 export default BarList;

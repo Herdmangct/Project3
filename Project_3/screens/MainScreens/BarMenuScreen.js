@@ -9,10 +9,6 @@ import { BARS, BARITEMS } from "../../data/dummy-data";
 import BarItemCard from "../../components/MainScreens/BarItemCard";
 import DropDownMenu from "../../components/MainScreens/DropDownMenu";
 
-// Constants
-import Colors from "../../constants/Colors";
-import Fonts from "../../constants/Fonts";
-
 const BarMenuScreen = props => {
   // get bar information and drinks information
   const barID = props.navigation.getParam("barID");

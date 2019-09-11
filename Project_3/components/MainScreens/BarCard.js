@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Image,
   StyleSheet,
   TouchableOpacity,
   Platform,
-  TouchableNativeFeedback
+  TouchableNativeFeedback,
+  TouchableWithoutFeedback
 } from "react-native";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import {
+  Ionicons,
+  FontAwesome,
+  MaterialCommunityIcons
+} from "@expo/vector-icons";
 
 // My Components
 import BodyText from "../GeneralComponents/BodyText";
@@ -19,11 +24,15 @@ import Colors from "../../constants/Colors";
 
 // Purely responsible for layout
 const BardCard = props => {
+  // Favouriting
+  const [isFavourite, setFavouriteStatus] = useState(false); // initially set Favourite to false
+
   let TouchableComponent = TouchableOpacity;
 
   if (Platform.OS === "android" && Platform.Version >= 21) {
     TouchableComponent = TouchableNativeFeedback;
   }
+
   return (
     <View style={styles.barCard}>
       <View style={styles.touchable}>
@@ -36,21 +45,26 @@ const BardCard = props => {
         >
           <View style={styles.cardContainer}>
             <View style={styles.imageContainer}>
-              <TouchableComponent
+              <TouchableWithoutFeedback
                 useForeground
-                delayPressIn={30}
                 onPress={() => {
                   console.log("Favourite!");
+                  setFavouriteStatus(!isFavourite);
                 }}
               >
                 <View style={styles.favourite}>
-                  <Ionicons
-                    name="ios-star-outline"
-                    size={50}
+                  <FontAwesome
+                    name={isFavourite ? "heart" : "heart-o"}
+                    size={42}
                     color={Colors.accentColor}
                   />
+                  {/* <Ionicons
+                    name={isFavourite ? "md-star" : "md-star-outline"}
+                    size={50}
+                    color={Colors.accentColor}
+                  /> */}
                 </View>
-              </TouchableComponent>
+              </TouchableWithoutFeedback>
               <Image style={styles.image} source={{ uri: props.image }} />
             </View>
             <View style={styles.info}>
@@ -62,26 +76,18 @@ const BardCard = props => {
               >
                 <HeaderText style={styles.title}>{props.title}</HeaderText>
 
-                <TouchableComponent
-                  useForeground
-                  delayPressIn={30}
-                  onPress={() => {
-                    console.log("BEER!");
-                  }}
-                >
-                  <View style={styles.button}>
-                    {/* <FontAwesome
-                      name="glass"
-                      size={75}
-                      color={Colors.accentColor}
-                    ></FontAwesome> */}
-                    <Ionicons
-                      name="ios-beer"
-                      size={75}
-                      color={Colors.accentColor}
-                    />
-                  </View>
-                </TouchableComponent>
+                <View style={styles.barPubDecoration}>
+                  {/* <MaterialCommunityIcons
+                    name="bottle-wine"
+                    size={100}
+                    color={Colors.accentColor}
+                  ></MaterialCommunityIcons> */}
+                  <Ionicons
+                    name={props.type === "Pub" ? "ios-beer" : "ios-wine"}
+                    size={props.type === "Pub" ? 75 : 100}
+                    color={Colors.accentColor}
+                  />
+                </View>
               </View>
               <View style={styles.locTime}>
                 <BodyText style={styles.location}>{props.location}</BodyText>
@@ -138,10 +144,10 @@ const styles = StyleSheet.create({
     width: "70%",
     marginVertical: 4
   },
-  button: {
+  barPubDecoration: {
     position: "absolute",
     top: -50,
-    right: 5,
+    right: -5,
     width: 80,
     height: 80,
     justifyContent: "center",
@@ -150,12 +156,14 @@ const styles = StyleSheet.create({
   },
   favourite: {
     position: "absolute",
-    top: -15,
-    left: -15,
-    width: 80,
-    height: 80,
+    top: -50,
+    left: -47,
+    width: 150,
+    height: 150,
+    borderRadius: 100,
     justifyContent: "center",
     alignItems: "center",
+    alignSelf: "center",
     overflow: "hidden",
     zIndex: 1
   },

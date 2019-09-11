@@ -1,7 +1,6 @@
 // Libraries
 import React from "react";
-import { StyleSheet, FlatList, Image } from "react-native";
-import { List } from "react-native-paper";
+import { StyleSheet, FlatList } from "react-native";
 
 // data
 import { BARS, BARITEMS } from "../../data/dummy-data";
@@ -57,6 +56,9 @@ const BarMenuScreen = props => {
 
   const renderDropDownMenu = itemData => {
     // get an array of drinks based on category
+    subCategoryDrinks = displayedDrinks.filter(
+      drink => drink.subCategory === itemData.item.subCategory
+    );
 
     return (
       <DropDownMenu
@@ -64,7 +66,7 @@ const BarMenuScreen = props => {
         imageUrl={itemData.item.imageUrl}
       >
         <FlatList
-          data={displayedDrinks}
+          data={subCategoryDrinks}
           keyExtractor={(item, index) => item.id}
           renderItem={renderBarItem}
           style={styles.flatList}

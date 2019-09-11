@@ -40,7 +40,7 @@ const BardCard = props => {
                 useForeground
                 delayPressIn={30}
                 onPress={() => {
-                  console.log("BEER!");
+                  console.log("Favourite!");
                 }}
               >
                 <View style={styles.favourite}>

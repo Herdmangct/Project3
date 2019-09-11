@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, SectionList } from "react-native";
 
 // Data
 import { BARITEMS } from "../../data/dummy-data";
@@ -13,11 +13,28 @@ const OrderOptionsScreen = props => {
 
   return (
     <View style={styles.screen}>
-      <BodyText>{selectedBarItem.title}</BodyText>
-      <BodyText>The Order Options Screen</BodyText>
+      <SectionList
+        renderItem={({ item, index, section }) => (
+          <Text key={index}>{item}</Text>
+        )}
+        renderSectionHeader={({ section: { title } }) => (
+          <Text style={{ fontWeight: "bold" }}>{title}</Text>
+        )}
+        sections={[
+          { title: "Title1", data: ["item1", "item2"] },
+          { title: "Title2", data: ["item3", "item4"] },
+          { title: "Title3", data: ["item5", "item6"] }
+        ]}
+        keyExtractor={(item, index) => item + index}
+      />
     </View>
   );
 };
+
+// <View style={styles.screen}>
+//     <BodyText>{selectedBarItem.title}</BodyText>
+//     <BodyText>The Order Options Screen</BodyText>
+//   </View>
 
 OrderOptionsScreen.navigationOptions = navigationData => {
   const selectedBarTitle = navigationData.navigation.getParam(

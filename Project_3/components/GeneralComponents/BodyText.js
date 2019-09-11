@@ -6,7 +6,10 @@ import Colors from "../../constants/Colors";
 import Fonts from "../../constants/Fonts";
 
 const BodyText = props => (
-  <Text style={{ ...styles.bodyText, ...props.style }} numberOfLines={1}>
+  <Text
+    style={{ ...styles.bodyText, ...props.style }}
+    numberOfLines={props.numberOfLines ? props.numberOfLines : 1}
+  >
     {props.children}
   </Text>
 );

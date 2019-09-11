@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback } from "react";
 import {
   View,
   Image,
@@ -14,6 +14,10 @@ import {
   MaterialCommunityIcons
 } from "@expo/vector-icons";
 
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavourite } from "../../store/actions/bars";
+
 // My Components
 import BodyText from "../GeneralComponents/BodyText";
 import HeaderText from "../GeneralComponents/HeaderText";
@@ -22,11 +26,22 @@ import BeerButton from "../Temporary/BeerButton";
 // Constants
 import Colors from "../../constants/Colors";
 
-// Purely responsible for layout
 const BardCard = props => {
-  // Favouriting
-  const [isFavourite, setFavouriteStatus] = useState(false); // initially set Favourite to false
+  const barId = props.id;
 
+  // Redux favouriting
+  const dispatch = useDispatch();
+  const toggleFavouriteHandler = useCallback(() => {
+    // useCallBack to run function once
+    dispatch(toggleFavourite(barId)); // dispatch toggleFavourite action in actions
+  }, [dispatch, barId]);
+
+  // Switch favouriting icon
+  const isFavourite = useSelector(state =>
+    state.bars.favouriteBars.some(bar => bar.id === barId)
+  );
+
+  // TouchableComponent
   let TouchableComponent = TouchableOpacity;
 
   if (Platform.OS === "android" && Platform.Version >= 21) {
@@ -48,8 +63,7 @@ const BardCard = props => {
               <TouchableWithoutFeedback
                 useForeground
                 onPress={() => {
-                  console.log("Favourite!");
-                  setFavouriteStatus(!isFavourite);
+                  toggleFavouriteHandler();
                 }}
               >
                 <View style={styles.favourite}>

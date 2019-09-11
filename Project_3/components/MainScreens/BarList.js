@@ -8,6 +8,7 @@ const BarList = props => {
   const renderBarCard = itemData => {
     return (
       <BarCard
+        id={itemData.item.id}
         title={itemData.item.title}
         type={itemData.item.type}
         image={itemData.item.imageURL}
@@ -16,7 +17,8 @@ const BarList = props => {
           props.navigation.navigate({
             routeName: "BarMenu",
             params: {
-              barID: itemData.item.id
+              barID: itemData.item.id,
+              selectedBarTitle: itemData.item.title
             }
           });
         }}

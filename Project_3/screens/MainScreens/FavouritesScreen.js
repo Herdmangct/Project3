@@ -1,13 +1,16 @@
+// USING REDUX FOR: BARS
+
+// Libraries
 import React from "react";
 
-// Data
-import { BARS } from "../../data/dummy-data";
+// Redux
+import { useSelector } from "react-redux";
 
 // My Components
 import BarList from "../../components/MainScreens/BarList";
 
 const FavouritesScreen = props => {
-  const favBars = BARS.filter(bar => bar.id === "b1" || bar.id === "b2");
+  const favBars = useSelector(state => state.bars.favouriteBars);
   return <BarList listData={favBars} navigation={props.navigation} />;
 };
 

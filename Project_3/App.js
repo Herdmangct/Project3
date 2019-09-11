@@ -1,14 +1,24 @@
 // Libraries
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import { useScreens } from "react-native-screens";
+import { createStore, combineReducers } from "redux";
 
 // My Components
 import MainNavigator from "./navigation/MainNavigator";
 
+// Redux
+import barsReducer from "./store/reducers/bars";
+import { Provider } from "react-redux";
+
 useScreens();
+
+// Redux
+const rootReducer = combineReducers({
+  bars: barsReducer
+});
+const store = createStore(rootReducer);
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -31,5 +41,9 @@ export default function App() {
   }
 
   // 2) Load the page once fonts are loaded
-  return <MainNavigator />;
+  return (
+    <Provider store={store}>
+      <MainNavigator />
+    </Provider>
+  );
 }

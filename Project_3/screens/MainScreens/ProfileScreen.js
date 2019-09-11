@@ -1,8 +1,7 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 
 // My Components
-import moduleName from "../../components/GeneralComponents/BodyText";
 import BodyText from "../../components/GeneralComponents/BodyText";
 
 const ProfileScreen = props => {

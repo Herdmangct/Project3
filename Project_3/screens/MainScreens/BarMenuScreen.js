@@ -1,23 +1,33 @@
+// USING REDUX FOR: BARS
+
 // Libraries
 import React from "react";
 import { StyleSheet, FlatList } from "react-native";
 
+// Redux
+import { useSelector } from "react-redux";
+
 // data
-import { BARS, BARITEMS } from "../../data/dummy-data";
+import { BARITEMS } from "../../data/dummy-data";
 
 // My Components
 import BarItemCard from "../../components/MainScreens/BarItemCard";
 import DropDownMenu from "../../components/MainScreens/DropDownMenu";
 
 const BarMenuScreen = props => {
-  // get bar information and drinks information
+  // Redux
+  const BARS = useSelector(state => state.bars.bars);
+
+  // get Bar information
   const barID = props.navigation.getParam("barID");
   const selectedBar = BARS.find(bar => bar.id === barID); // for bar card later
+
+  // get Drinks information
   const displayedDrinks = BARITEMS.filter(
     barItem => barItem.barId.indexOf(barID) >= 0
   );
 
-  // return an object of unique subCategories // put in API soon
+  // return an object of unique subCategories // PUT IN API SOON
   const subCategories = [
     ...new Set(displayedDrinks.map(drink => drink.subCategory))
   ].map(subCategory => {
@@ -82,12 +92,12 @@ const BarMenuScreen = props => {
 };
 
 BarMenuScreen.navigationOptions = navigationData => {
-  const barID = navigationData.navigation.getParam("barID");
-
-  const selectedBar = BARS.find(bar => bar.id === barID);
+  const selectedBarTitle = navigationData.navigation.getParam(
+    "selectedBarTitle"
+  );
 
   return {
-    headerTitle: selectedBar.title
+    headerTitle: selectedBarTitle
   };
 };
 

@@ -2,6 +2,8 @@
 
 # Technologies
 
-## React Native
+- React Native
 
-## React Native Paper
+- React Native Paper
+
+- Redux

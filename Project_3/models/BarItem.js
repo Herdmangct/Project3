@@ -15,8 +15,7 @@ class BarItem {
     onSpecial,
     isHouseDrink,
     imageUrl,
-    mixers,
-    sizes
+    orderOptions
   ) {
     this.id = id;
     this.barId = barId;
@@ -32,8 +31,7 @@ class BarItem {
     this.onSpecial = onSpecial;
     this.isHouseDrink = isHouseDrink;
     this.imageUrl = imageUrl;
-    this.mixers = mixers;
-    this.sizes = sizes;
+    this.orderOptions = orderOptions;
   }
 }
 

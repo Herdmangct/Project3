@@ -1,82 +1,48 @@
 import React, { useState } from "react";
-import { View, StyleSheet, SectionList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { List, Checkbox, RadioButton } from "react-native-paper";
 
 // Data
 import { BARITEMS } from "../../data/dummy-data";
 
 // My Components
-import HeaderText from "../../components/GeneralComponents/HeaderText";
-import BodyText from "../../components/GeneralComponents/BodyText";
+import OptionsList from "../../components/Orders/OptionsList";
 
-// constants
-import Colors from "../../constants/Colors";
+// My Models
+import ListData from "../../models/BusinessLogicModels/listData";
 
 const OrderOptionsScreen = props => {
   const barItemId = props.navigation.getParam("barItemId");
   const selectedBarItem = BARITEMS.find(barItem => barItem.id === barItemId); // for bar item card in future
 
-  // get sections data
-
-  // checkbox
-  const [checkedStatus, setCheckedStatus] = useState("unchecked");
-
-  const renderItem = ({ item, index, section }) => {
-    return (
-      <List.Item
-        title={<HeaderText>{item}</HeaderText>}
-        left={() => (
-          <Checkbox.Android
-            status={checkedStatus}
-            onPress={() => {
-              setCheckedStatus(
-                checkedStatus === "unchecked" ? "checked" : "unchecked"
-              );
-            }}
-          />
-        )}
-        style={{
-          borderBottomWidth: 0.5,
-          borderBottomColor: Colors.primaryColor
-        }}
-      />
+  // get listData - This function allows me to have as many order options as I would like on each object
+  const listData = Object.keys(selectedBarItem.orderOptions).map(label => {
+    return new ListData(
+      selectedBarItem.orderOptions[label].optionTitle,
+      selectedBarItem.orderOptions[label].optionData
     );
-  };
+  });
 
-  const renderSectionHeader = ({ section: { title } }) => {
+  const renderOptions = itemData => {
     return (
-      <View style={{ backgroundColor: Colors.smallTextColor }}>
-        <HeaderText
-          style={{
-            color: Colors.accentColor
-          }}
-        >
-          {title}
-        </HeaderText>
-      </View>
+      <OptionsList
+        title={itemData.item.title}
+        listData={itemData.item.listData}
+      />
     );
   };
 
   return (
     <View>
-      <SectionList
-        renderItem={renderItem}
-        renderSectionHeader={renderSectionHeader}
-        sections={[
-          { title: "CHOOSE SIZE", data: ["Single", "Double"] },
-          { title: "CHOOSE MIXER", data: ["Coke", "Lemonade", "On the rocks"] },
-          { title: "SPECIAL REQUESTS", data: ["item5", "item6"] }
-        ]}
-        keyExtractor={(item, index) => item + index}
+      <FlatList
+        data={listData}
+        keyExtractor={(item, index) => item.title}
+        renderItem={renderOptions}
+        style={props.style}
       />
     </View>
   );
 };
-
-// <View style={styles.screen}>
-//     <BodyText>{selectedBarItem.title}</BodyText>
-//     <BodyText>The Order Options Screen</BodyText>
-//   </View>
 
 OrderOptionsScreen.navigationOptions = navigationData => {
   const selectedBarTitle = navigationData.navigation.getParam(

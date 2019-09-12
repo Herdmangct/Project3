@@ -1,6 +1,7 @@
 import Bar from "../models/Bar";
 import BarItem from "../models/BarItem";
 
+// BARS
 export const BARS = [
   new Bar(
     "b1",
@@ -94,6 +95,7 @@ export const BARS = [
   )
 ];
 
+// BARITEMS
 export const BARITEMS = [
   new BarItem(
     "i1",
@@ -110,8 +112,20 @@ export const BARITEMS = [
     true,
     true,
     "https://media.danmurphys.com.au/dmo/product/19252-1.png",
-    ["Coke", "Coke No Sugar", "Sprite", "Tonic Water"],
-    ["Single", "Double"]
+    {
+      sizes: { optionTitle: "CHOOSE SIZE", optionData: ["Single", "Double"] },
+      mixers: {
+        optionTitle: "CHOOSE MIXER",
+        optionData: [
+          "Coke",
+          "Coke No Sugar",
+          "Sprite",
+          "Tonic Water",
+          "Ginger Beer",
+          "On The Rocks"
+        ]
+      }
+    }
   ),
   new BarItem(
     "i2",
@@ -128,8 +142,20 @@ export const BARITEMS = [
     false,
     false,
     "https://media.danmurphys.com.au/dmo/product/904127-1.png",
-    ["Coke", "Coke No Sugar", "Sprite", "Tonic Water"],
-    ["Single", "Double"]
+    {
+      sizes: { optionTitle: "CHOOSE SIZE", optionData: ["Single", "Double"] },
+      mixers: {
+        optionTitle: "CHOOSE MIXER",
+        optionData: [
+          "Coke",
+          "Coke No Sugar",
+          "Sprite",
+          "Tonic Water",
+          "Ginger Beer",
+          "On The Rocks"
+        ]
+      }
+    }
   ),
   new BarItem(
     "i3",
@@ -146,8 +172,20 @@ export const BARITEMS = [
     false,
     true,
     "https://media.danmurphys.com.au/dmo/product/906818-1.png",
-    ["Coke", "Coke No Sugar", "Sprite", "Tonic Water"],
-    ["Single", "Double"]
+    {
+      sizes: { optionTitle: "CHOOSE SIZE", optionData: ["Single", "Double"] },
+      mixers: {
+        optionTitle: "CHOOSE MIXER",
+        optionData: [
+          "Coke",
+          "Coke No Sugar",
+          "Sprite",
+          "Tonic Water",
+          "Ginger Beer",
+          "On The Rocks"
+        ]
+      }
+    }
   ),
   new BarItem(
     "i4",
@@ -164,8 +202,20 @@ export const BARITEMS = [
     false,
     false,
     "https://media.danmurphys.com.au/dmo/product/374557-1.png",
-    ["Coke", "Coke No Sugar", "Sprite", "Tonic Water"],
-    ["Single", "Double"]
+    {
+      sizes: { optionTitle: "CHOOSE SIZE", optionData: ["Single", "Double"] },
+      mixers: {
+        optionTitle: "CHOOSE MIXER",
+        optionData: [
+          "Coke",
+          "Coke No Sugar",
+          "Sprite",
+          "Tonic Water",
+          "Ginger Beer",
+          "On The Rocks"
+        ]
+      }
+    }
   ),
   new BarItem(
     "i5",
@@ -182,8 +232,20 @@ export const BARITEMS = [
     true,
     true,
     "https://media.danmurphys.com.au/dmo/product/21281-1.png",
-    ["Coke", "Coke No Sugar", "Sprite", "Tonic Water"],
-    ["Single", "Double"]
+    {
+      sizes: { optionTitle: "CHOOSE SIZE", optionData: ["Single", "Double"] },
+      mixers: {
+        optionTitle: "CHOOSE MIXER",
+        optionData: [
+          "Coke",
+          "Coke No Sugar",
+          "Sprite",
+          "Tonic Water",
+          "Ginger Beer",
+          "On The Rocks"
+        ]
+      }
+    }
   ),
   new BarItem(
     "i6",
@@ -200,8 +262,20 @@ export const BARITEMS = [
     false,
     false,
     "https://media.danmurphys.com.au/dmo/product/94915-1.png",
-    ["Coke", "Coke No Sugar", "Sprite", "Tonic Water"],
-    ["Single", "Double"]
+    {
+      sizes: { optionTitle: "CHOOSE SIZE", optionData: ["Single", "Double"] },
+      mixers: {
+        optionTitle: "CHOOSE MIXER",
+        optionData: [
+          "Coke",
+          "Coke No Sugar",
+          "Sprite",
+          "Tonic Water",
+          "Ginger Beer",
+          "On The Rocks"
+        ]
+      }
+    }
   ),
   new BarItem(
     "i7",
@@ -218,8 +292,9 @@ export const BARITEMS = [
     false,
     false,
     "https://media.danmurphys.com.au/dmo/product/357480-1.png",
-    [],
-    ["Bottle", "Long-neck"]
+    {
+      sizes: { optionTitle: "CHOOSE SIZE", optionData: ["Bottle", "Long-neck"] }
+    }
   ),
   new BarItem(
     "i8",
@@ -236,8 +311,9 @@ export const BARITEMS = [
     true,
     true,
     "https://media.danmurphys.com.au/dmo/product/809797-1.png",
-    [],
-    ["Schooner", "Pint"] // Pint needs to increase the price
+    {
+      sizes: { optionTitle: "CHOOSE SIZE", optionData: ["Schooner", "Pint"] }
+    } // Pint needs to increase the price
   ),
   new BarItem(
     "i9",
@@ -254,8 +330,9 @@ export const BARITEMS = [
     false,
     true,
     "https://media.danmurphys.com.au/dmo/product/98903-1.png",
-    [],
-    ["Schooner", "Pint"] // Pint needs to increase the price
+    {
+      sizes: { optionTitle: "CHOOSE SIZE", optionData: ["Schooner", "Pint"] }
+    } // Pint needs to increase the price
   ),
   new BarItem(
     "i10",
@@ -272,7 +349,8 @@ export const BARITEMS = [
     false,
     true,
     "https://media.danmurphys.com.au/dmo/product/768443-1.png",
-    [],
-    ["Schooner", "Pint"] // Pint needs to increase the price
+    {
+      sizes: { optionTitle: "CHOOSE SIZE", optionData: ["Schooner", "Pint"] }
+    } // Pint needs to increase the price
   )
 ];

@@ -123,11 +123,11 @@ export const BARITEMS = [
           "Tonic Water",
           "Ginger Beer",
           "On The Rocks",
-          "lol",
-          "lol",
-          "lol",
-          "lol",
-          "lol"
+          "item1",
+          "item2",
+          "item3",
+          "item4",
+          "item5"
         ]
       }
     }

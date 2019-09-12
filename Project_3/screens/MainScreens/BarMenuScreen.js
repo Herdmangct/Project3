@@ -2,7 +2,7 @@
 
 // Libraries
 import React from "react";
-import { StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 
 // Redux
 import { useSelector } from "react-redux";
@@ -13,6 +13,7 @@ import { BARITEMS } from "../../data/dummy-data";
 // My Components
 import BarItemCard from "../../components/MainScreens/BarItemCard";
 import DropDownMenu from "../../components/MainScreens/DropDownMenu";
+import ViewCartBanner from "../../components/Orders/ViewCartBanner";
 
 const BarMenuScreen = props => {
   // Redux
@@ -82,12 +83,15 @@ const BarMenuScreen = props => {
   };
 
   return (
-    <FlatList
-      data={subCategories}
-      keyExtractor={(item, index) => item.id}
-      renderItem={renderDropDownMenu}
-      style={styles.flatList}
-    />
+    <View style={styles.screen}>
+      <FlatList
+        data={subCategories}
+        keyExtractor={(item, index) => item.id}
+        renderItem={renderDropDownMenu}
+        style={styles.flatList}
+      />
+      <ViewCartBanner navigation={props.navigation} />
+    </View>
   );
 };
 
@@ -103,9 +107,7 @@ BarMenuScreen.navigationOptions = navigationData => {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    flex: 1
   },
   flatList: {
     flex: 1,

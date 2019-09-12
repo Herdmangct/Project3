@@ -18,6 +18,7 @@ import FavouritesScreen from "../screens/MainScreens/FavouritesScreen";
 
 // Order Screens
 import OrderOptionsScreen from "../screens/OrderScreens/OrderOptionsScreen";
+import OrderCheckoutScreen from "../screens/OrderScreens/OrderCheckoutScreen";
 
 // Constants
 import Colors from "../constants/Colors";
@@ -49,7 +50,8 @@ const BackandForthNavigator = createStackNavigator(
   {
     Home: HomeScreen,
     OrderOptions: OrderOptionsScreen,
-    BarMenu: BarMenuScreen
+    BarMenu: BarMenuScreen,
+    OrderCart: OrderCheckoutScreen
   },
   {
     mode: "card", // change to modal for slide up from bottom of screen ios

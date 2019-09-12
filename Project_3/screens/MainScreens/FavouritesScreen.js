@@ -2,14 +2,13 @@
 
 // Libraries
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 // Redux
 import { useSelector } from "react-redux";
 
 // My Components
 import BarList from "../../components/MainScreens/BarList";
-import HeaderText from "../../components/GeneralComponents/HeaderText";
 import BodyText from "../../components/GeneralComponents/BodyText";
 
 const FavouritesScreen = props => {

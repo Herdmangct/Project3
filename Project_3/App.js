@@ -10,13 +10,15 @@ import MainNavigator from "./navigation/MainNavigator";
 
 // Redux
 import barsReducer from "./store/reducers/bars";
+import cartReducer from "./store/reducers/cart";
 import { Provider } from "react-redux";
 
 useScreens();
 
 // Redux
 const rootReducer = combineReducers({
-  bars: barsReducer
+  bars: barsReducer,
+  cart: cartReducer
 });
 const store = createStore(rootReducer);
 

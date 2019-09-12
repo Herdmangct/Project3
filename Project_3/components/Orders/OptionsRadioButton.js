@@ -39,7 +39,7 @@ const OptionsRadioButton = props => {
               <RadioButton
                 value={props.title}
                 status={props.checked === props.title ? "checked" : "unchecked"}
-                disabled={true} // MAKE SURE THIS DOESN"T SCREW UP THE ORDER STATE
+                color={"#b9b9b9"}
               />
             )}
             style={styles.listItem}

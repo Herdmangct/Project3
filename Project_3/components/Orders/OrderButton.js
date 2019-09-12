@@ -29,7 +29,8 @@ const OrderButton = props => {
         background={TouchableNativeFeedback.Ripple(Colors.accentColor, false)}
         delayPressIn={30}
         onPress={() => {
-          console.log("ORDER BUTTON PRESSED");
+          props.navigation.goBack();
+          alert(`${props.itemTitle} added to your cart!`);
         }}
       >
         <View style={styles.content}>

@@ -6,7 +6,6 @@ import {
   TouchableNativeFeedback,
   Platform
 } from "react-native";
-import { List, Checkbox, RadioButton } from "react-native-paper";
 
 // My Components
 import HeaderText from "../GeneralComponents/HeaderText";
@@ -15,7 +14,7 @@ import HeaderText from "../GeneralComponents/HeaderText";
 import Colors from "../../constants/Colors";
 
 // Purely responsible for layout
-const OptionsRadioButton = props => {
+const OrderButton = props => {
   // TouchableComponent
   let TouchableComponent = TouchableOpacity;
 
@@ -27,23 +26,16 @@ const OptionsRadioButton = props => {
     <View style={styles.touchable}>
       <TouchableComponent
         useForeground
+        background={TouchableNativeFeedback.Ripple(Colors.accentColor, false)}
         delayPressIn={30}
         onPress={() => {
-          props.setCheckedStatus(props.title);
+          console.log("ORDER BUTTON PRESSED");
         }}
       >
-        <View>
-          <List.Item
-            title={<HeaderText>{props.title}</HeaderText>}
-            left={() => (
-              <RadioButton
-                value={props.title}
-                status={props.checked === props.title ? "checked" : "unchecked"}
-                color={Colors.radioButtonColor}
-              />
-            )}
-            style={styles.listItem}
-          />
+        <View style={styles.content}>
+          <HeaderText style={{ color: Colors.accentColor }}>
+            ADD TO ORDER
+          </HeaderText>
         </View>
       </TouchableComponent>
     </View>
@@ -52,12 +44,23 @@ const OptionsRadioButton = props => {
 
 const styles = StyleSheet.create({
   touchable: {
-    overflow: "hidden"
+    height: 70,
+    padding: 8
   },
-  listItem: {
-    borderBottomWidth: 0.5,
-    borderBottomColor: Colors.primaryColor
+  content: {
+    height: "100%",
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.primaryColor,
+    shadowColor: "black",
+    shadowOpacity: 0.26,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    elevation: 5,
+    borderRadius: 5,
+    overflow: "hidden"
   }
 });
 
-export default OptionsRadioButton;
+export default OrderButton;

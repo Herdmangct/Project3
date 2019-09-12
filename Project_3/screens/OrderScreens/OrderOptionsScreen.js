@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
-import { List, Checkbox, RadioButton } from "react-native-paper";
 
 // Data
 import { BARITEMS } from "../../data/dummy-data";
 
 // My Components
 import OptionsList from "../../components/Orders/OptionsList";
+import OrderButton from "../../components/Orders/OrderButton";
 
 // My Models
 import ListData from "../../models/BusinessLogicModels/listData";
@@ -33,13 +33,14 @@ const OrderOptionsScreen = props => {
   };
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <FlatList
         data={listData}
         keyExtractor={(item, index) => item.title}
         renderItem={renderOptions}
         style={props.style}
       />
+      <OrderButton />
     </View>
   );
 };

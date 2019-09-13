@@ -7,6 +7,10 @@ import {
   Platform
 } from "react-native";
 
+// Redux
+import { useDispatch } from "react-redux";
+import * as cartActions from "../../store/actions/cart";
+
 // My Components
 import HeaderText from "../GeneralComponents/HeaderText";
 
@@ -15,6 +19,9 @@ import Colors from "../../constants/Colors";
 
 // Purely responsible for layout
 const OrderButton = props => {
+  // Redux
+  const dispatch = useDispatch();
+
   // TouchableComponent
   let TouchableComponent = TouchableOpacity;
 
@@ -29,6 +36,7 @@ const OrderButton = props => {
         background={TouchableNativeFeedback.Ripple(Colors.accentColor, false)}
         delayPressIn={30}
         onPress={() => {
+          dispatch(cartActions.addToCart(props.barItem));
           props.navigation.goBack();
           alert(`${props.itemTitle} added to your cart!`);
         }}

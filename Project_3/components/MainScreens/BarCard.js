@@ -48,6 +48,20 @@ const BardCard = props => {
     TouchableComponent = TouchableNativeFeedback;
   }
 
+  // change favourites icon to cross when on favourites screen
+  let FavouritesIcon;
+  let OnIcon;
+  let OffIcon;
+  if (props.onFavouritesScreen) {
+    FavouritesIcon = MaterialCommunityIcons;
+    OnIcon = "close";
+    OffIcon = "close";
+  } else {
+    FavouritesIcon = FontAwesome;
+    OnIcon = "heart";
+    OffIcon = "heart-o";
+  }
+
   return (
     <View style={styles.barCard}>
       <View style={styles.touchable}>
@@ -67,8 +81,8 @@ const BardCard = props => {
                 }}
               >
                 <View style={styles.favourite}>
-                  <FontAwesome
-                    name={isFavourite ? "heart" : "heart-o"}
+                  <FavouritesIcon
+                    name={isFavourite ? OnIcon : OffIcon}
                     size={42}
                     color={Colors.accentColor}
                   />

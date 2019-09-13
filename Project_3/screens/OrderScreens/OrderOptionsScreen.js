@@ -43,6 +43,7 @@ const OrderOptionsScreen = props => {
       <OrderButton
         navigation={props.navigation}
         itemTitle={selectedBarItem.title}
+        barItem={selectedBarItem}
       />
     </View>
   );

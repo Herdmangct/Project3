@@ -26,8 +26,8 @@ const ViewCartBanner = props => {
     TouchableComponent = TouchableNativeFeedback;
   }
 
+  // Only render if any items in the cart
   const cartItems = useSelector(state => state.cart.items);
-
   if (_.isEmpty(cartItems)) {
     return <View></View>;
   }

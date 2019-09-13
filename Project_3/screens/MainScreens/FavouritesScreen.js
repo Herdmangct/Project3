@@ -24,7 +24,13 @@ const FavouritesScreen = props => {
     );
   }
 
-  return <BarList listData={favBars} navigation={props.navigation} />;
+  return (
+    <BarList
+      listData={favBars}
+      navigation={props.navigation}
+      onFavouritesScreen={true}
+    />
+  );
 };
 
 FavouritesScreen.navigationOptions = {

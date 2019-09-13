@@ -3,6 +3,7 @@ import { FlatList, StyleSheet } from "react-native";
 
 // My Components
 import BarCard from "../MainScreens/BarCard";
+import { setRecoveryProps } from "expo/build/ErrorRecovery/ErrorRecovery";
 
 const BarList = props => {
   const renderBarCard = itemData => {
@@ -13,6 +14,7 @@ const BarList = props => {
         type={itemData.item.type}
         image={itemData.item.imageURL}
         location={itemData.item.location}
+        onFavouritesScreen={props.onFavouritesScreen}
         onSelect={() => {
           props.navigation.navigate({
             routeName: "BarMenu",

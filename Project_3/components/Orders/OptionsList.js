@@ -1,17 +1,9 @@
 import React, { useState } from "react";
-import { View, StyleSheet, SectionList, FlatList } from "react-native";
-
-// Data
-import { BARITEMS } from "../../data/dummy-data";
+import { View, StyleSheet, FlatList } from "react-native";
 
 // My Components
-import HeaderText from "../../components/GeneralComponents/HeaderText";
-import BodyText from "../../components/GeneralComponents/BodyText";
 import OptionsHeader from "./OptionsHeader";
 import OptionsRadioButton from "./OptionsRadioButton";
-
-// constants
-import Colors from "../../constants/Colors";
 
 const OptionsList = props => {
   // RadioButton
@@ -40,19 +32,6 @@ const OptionsList = props => {
     </View>
   );
 };
-
-{
-  /* <SectionList
-        renderItem={renderItem}
-        renderSectionHeader={renderSectionHeader}
-        sections={[
-          { title: "CHOOSE SIZE", data: ["Single", "Double"] },
-          { title: "CHOOSE MIXER", data: ["Coke", "Lemonade", "On the rocks"] },
-          { title: "SPECIAL REQUESTS", data: ["item5", "item6"] }
-        ]}
-        keyExtractor={(item, index) => item + index}
-      /> */
-}
 
 const styles = StyleSheet.create({
   screen: {

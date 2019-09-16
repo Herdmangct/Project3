@@ -1,10 +1,14 @@
 {
   "expo": {
     "name": "Why_Wait_?",
-    "slug": "Project_3",
+    "slug": "general_assembly_final_project",
     "privacy": "public",
     "sdkVersion": "34.0.0",
-    "platforms": ["ios", "android", "web"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/splash.png",
@@ -16,9 +20,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/Herdmangct/Project3"
   }
 }

@@ -2,13 +2,13 @@
 
 ## Table of Contents
 
-- [App Walk Through](App Walk Through (Screen Shots))
-- [How to run the app on your phone](How to run the app on your phone)
-- [App Features](App Features)
-- [Future Features](Future Features)
-- [Technologies Used](Technologies Used)
-- [Acknowledgements](Acknowledgements)
-- [Author](Author)
+- [App Walk Through][app walk through (screen shots)]
+- [How to run the app on your phone][how to run the app on your phone]
+- [App Features][app features]
+- [Future Features][future features]
+- [Technologies Used][technologies used]
+- [Acknowledgements][acknowledgements]
+- [Author][author]
 
 ### App Walk Through (Screen Shots)
 

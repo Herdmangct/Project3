@@ -13,7 +13,7 @@
 ### App Walk Through (Screen Shots)
 
 **1. Home Screen**
-![Home Screen](/img/home-screen.png)
+![Home Screen|20%](/img/home-screen.png)
 
 **2. Bar Menu Screen**
 [Bar Menu Screen](/img/bar-menu-screen.png)

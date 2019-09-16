@@ -13,16 +13,16 @@
 ### App Walk Through (Screen Shots)
 
 **1. Home Screen**
-[Home Screen](./img/home-screen.png)
+[Home Screen](/img/home-screen.png)
 
 **2. Bar Menu Screen**
-[Bar Menu Screen](./img/bar-menu-screen.png)
+[Bar Menu Screen](/img/bar-menu-screen.png)
 
 **3. Order Options Screen**
-[Order Options Screen](./img/order-options-screen.png)
+[Order Options Screen](/img/order-options-screen.png)
 
 **4. Favourites Screen**
-[Favourites Screen](./img/favourites-screen.png)
+[Favourites Screen](/img/favourites-screen.png)
 
 ### How to run the app on your phone
 

@@ -13,7 +13,9 @@
 ### App Walk Through (Screen Shots)
 
 **1. Home Screen**
-<img src="/Herdmangct/Project3/raw/master/img/home-screen.png" alt="Home Screen" style="max-width: 90%;">
+<img src="/img/home-screen.png" alt="Home Screen" style="max-width:90%;">
+
+<!-- ![Home Screen](/img/home-screen.png) -->
 
 **2. Bar Menu Screen**
 ![Bar Menu Screen](/img/bar-menu-screen.png)

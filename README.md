@@ -25,7 +25,8 @@ NB: Unfortunately, this demo can only be run off Android Phones. If you have an 
 #### Run it on your Android device
 
 1. Download the Expo App from the Google Play Store on your Android device.
-   [expo-app-download.png](./img/expo-app-download.png)
+   ![expo-app-download.png](./img/expo-app-download.png)
+
 2. Navigate to this [link](https://expo.io/@herdmangct/general_assembly_final_project)
 3. Open the expo app and scan the bar code
 4. The app will be viewable on your Phone

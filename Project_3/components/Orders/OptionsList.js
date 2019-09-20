@@ -6,7 +6,7 @@ import OptionsHeader from "./OptionsHeader";
 import OptionsRadioButton from "./OptionsRadioButton";
 
 const OptionsList = props => {
-  // RadioButton
+  // RadioButton State
   const [checkedStatus, setCheckedStatus] = useState(props.listData[0]);
 
   const renderOptionsRadioButton = itemData => {

@@ -2,7 +2,7 @@
 
 // Libraries
 import React from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, Image } from "react-native";
 
 // Redux
 import { useSelector } from "react-redux";
@@ -81,9 +81,12 @@ const BarMenuScreen = props => {
       </DropDownMenu>
     );
   };
-
+  // TODO: Image at top of screen!
   return (
     <View style={styles.screen}>
+      <View style={styles.imageContainer}>
+        <Image source={{ uri: selectedBar.imageURL }} style={styles.image} />
+      </View>
       <FlatList
         data={subCategories}
         keyExtractor={(item, index) => item.id}
@@ -114,6 +117,15 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     paddingLeft: 0 // remove the gap after the list is rendered
+  },
+  imageContainer: {
+    width: "100%",
+    height: "40%",
+    overflow: "hidden"
+  },
+  image: {
+    width: "100%",
+    height: "100%"
   }
 });
 

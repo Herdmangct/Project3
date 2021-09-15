@@ -20,7 +20,7 @@
 
 ### How to run the app on your phone
 
-NB: Unfortunately, this demo can only be run off Android Phones. If you have an IOS device you can use the in-browser emulator but there could be a server wait time to view it. Apologies for any inconveniences.
+NB: Unfortunately, this demo can only be run on Android Phones. If you have an IOS device you can use the in-browser emulator but there could be a server wait time to view it. Apologies for any inconveniences.
 
 #### Run it on your Android device
 

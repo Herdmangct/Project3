@@ -169,7 +169,7 @@ export const BARITEMS = [
     "Spirits",
     "Rum",
     "Captain Morgan",
-    30,
+    25,
     "ml",
     "Smooth and medium bodied, Captain Morgan Original Spiced is a spirit  based drink containing a secret blend of Caribbean rums, mellow spice and other natural flavours such as vanilla, cardamom and cinnamon.",
     10.0,
